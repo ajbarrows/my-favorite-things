@@ -1,0 +1,14 @@
+# Configuration file for pull_project.sh and push_project.sh
+# List folders and file patterns to sync (not tracked in git)
+# One entry per line, comments start with #
+
+# Core data directories
+data/
+models/
+
+# Add other patterns as needed, examples:
+# experiments/
+# checkpoints/
+# *.pkl
+# *.h5
+# logs/

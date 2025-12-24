@@ -28,3 +28,23 @@ There are times when your interactive job will take more than a second to deploy
 
 Good luck. 
 
+## Bright copper kettles
+
+`file-syncing/`
+
+Version control -- specifically git and GitHub -- are essential for keeping track of text-based files that comprise the bulk of data science projects. However, the contents of (in my workflow) `/data` and `/models` are usually untracked because they contain large (or private) things.
+
+running
+
+`bash pull_project.sh {path_to_project}` 
+
+will 
+
+- compare the contents of your local project path to your destination's project path (at this point I have the remote path hardcoded to my SSH alias `vacc`; you'll have to change this until I rewrite this with the intention of other humans using it)
+- list what will be changed and give you the opportunity to accept these changes
+	- including deletions
+	- without deletions.
+
+`push_project.sh` works the same, but in reverse. You want to keep these operations separated. Ask me how I know.
+
+`.sync-folders` acts as a configuration file for what directories to sync.   
