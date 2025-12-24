@@ -13,7 +13,7 @@ Configuration for a brilliant bit of software called [beets](https://beets.io) t
 This is all a bit bespoke. The general idea is that using remote development features of VSCode spawn lot of subprocesses on the remote machine. University HPC clusters generally don't like you spawning lots of processes on login nodes, and you often need a bit more resources than what a login node has to offer. So, on the cluster -- assuming your cluster uses SLURM -- add
 
 ```
-alias vscodejob="srun --partition={partition_name} -t 08:00:00 --cups-per-task=2 --ntasks=1 --mem=16G --pty bash -i"
+alias vscodejob="srun --partition={partition_name} -t 08:00:00 --cpus-per-task=2 --ntasks=1 --mem=16G --pty bash -i"
 ```
 
 to your `.bashrc`
@@ -86,4 +86,4 @@ where `generate_index.sh` is a basic script that makes an `index.html` file list
 
 If you're in a situation where accidental calls to `sudo` alert a watchful admninistrator, consider redirecting those accidental calls:
 
-alias sudo='echo "sudo commmand disabled"'
+`alias sudo='echo "sudo commmand disabled"'`
