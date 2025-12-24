@@ -22,10 +22,6 @@ Host ${HOST_ALIAS}
     User ${USER}
     IdentityFile ${IDENTITY_FILE}
     ProxyCommand ${ProxyCommand}
-Host r2d2
-    HostName 132.198.143.238
-    User tony
-    IdentityFile ~/.ssh/id_rsa_ajb
 EOF
 
 echo "SSH config file created successfully at ~/.ssh/vscodeconfig"
