@@ -47,4 +47,43 @@ will
 
 `push_project.sh` works the same, but in reverse. You want to keep these operations separated. Ask me how I know.
 
-`.sync-folders` acts as a configuration file for what directories to sync.   
+`.sync-folders` acts as a configuration file for what directories to sync.
+
+## Warm woolen mittens
+
+I've amassed a collection of additions to various `~/.bashrc` config files. They should most certainly be formalized in some better way, but they're not, so here they are:
+
+
+### Jupyter 
+
+Making an ipython kernal from a (the active) conda environment that a Jupyter notebook might sometimes find:
+
+`alias jupyterkernel="python -m ipykernel install --user --name $CONDA_DEFAULT_ENV"`
+
+Exporting conda environment to `environment.yml` without build information that will most certainly break across platforms:
+
+`alias exportnobuild="conda env export --no-builds | grep -v 'prefix' > environment.yml"`
+
+### Quarto
+
+If you have a functioning web server that you can access through SSH, it's often helpful to quickly transfer the rendered contents of a Quarto website to a remote location for display:
+
+```
+sync_quarto() {
+  project_name=$(basename "$(pwd)")
+  destination="${1:-{path_to_destination}"
+  rsync -avz --delete ./quarto/_site/ "$destination"/
+ }
+``` 
+
+My intention is to always update the destination with what's coming from the source, hence the `--delete` flag. It also may be helpful to add 
+
+`ssh {destination} 'bash generate_index.sh'`
+
+where `generate_index.sh` is a basic script that makes an `index.html` file listing the contents of your destination directory. Or whatever you want it to do.
+
+### HPC
+
+If you're in a situation where accidental calls to `sudo` alert a watchful admninistrator, consider redirecting those accidental calls:
+
+alias sudo='echo "sudo commmand disabled"'
