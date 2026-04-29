@@ -3,8 +3,9 @@
 # One entry per line, comments start with #
 
 # Core data directories
-data/
-models/
+#data/
+#models/
+#data/06_reporting/
 
 # Add other patterns as needed, examples:
 # experiments/
